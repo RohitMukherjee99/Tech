@@ -51,49 +51,95 @@ export default function AccommodationPage() {
           {/* Room Types */}
           <h3 className="font-heading text-2xl font-bold text-primary-900 text-center mb-8">Room Categories</h3>
           <div className="grid md:grid-cols-3 gap-6">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent">
-              <div className="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&q=80" alt="Deluxe Room" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" /></div>
+            {/* Deluxe Room */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              className="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent hover:border-primary-200 transition-all"
+              data-testid="room-deluxe"
+            >
+              <div className="h-48 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&q=80" alt="Deluxe Room" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
               <div className="p-6">
                 <h4 className="font-heading text-xl font-bold text-primary-900 mb-2">Deluxe Room</h4>
-                <div className="flex items-baseline gap-1 mb-4"><span className="font-heading text-3xl font-bold text-primary-900">₹6,000</span><span className="text-slate-500 font-body text-sm">/night</span></div>
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className="font-heading text-3xl font-bold text-primary-900">₹6,000</span>
+                  <span className="text-slate-500 font-body text-sm">/night</span>
+                </div>
                 <ul className="space-y-2 mb-6">
                   <li className="flex items-center gap-2 text-sm text-slate-600 font-body"><Check className="w-4 h-4 text-green-500" /> King/Twin beds</li>
-                  <li className="flex items-center gap-2 text-sm text-slate-600 font-body"><Check className="w-4 h-4 text-green-500" /> 35 sqm</li>
+                  <li className="flex items-center gap-2 text-sm text-slate-600 font-body"><Check className="w-4 h-4 text-green-500" /> 35 sqm room size</li>
                   <li className="flex items-center gap-2 text-sm text-slate-600 font-body"><Check className="w-4 h-4 text-green-500" /> City view</li>
                 </ul>
-                <Link to="/registration"><Button className="w-full rounded-full font-body font-semibold bg-primary-900 hover:bg-primary-900/90 text-white">Book with Registration</Button></Link>
+                <Link to="/registration">
+                  <Button className="w-full rounded-full font-body font-semibold bg-primary-900 hover:bg-primary-900/90 text-white">Book with Registration</Button>
+                </Link>
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-secondary-500 ring-2 ring-secondary-500 ring-offset-2">
+            {/* Premium Room - Recommended */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ delay: 0.1 }} 
+              className="relative bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-secondary-500 ring-2 ring-secondary-500 ring-offset-2"
+              data-testid="room-premium"
+            >
               <div className="absolute top-4 right-4 z-10 bg-secondary-500 text-primary-900 text-xs font-body font-semibold px-3 py-1 rounded-full">RECOMMENDED</div>
-              <div className="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&h=400&fit=crop&q=80" alt="Premium Room" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" /></div>
+              <div className="h-48 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&h=400&fit=crop&q=80" alt="Premium Room" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
               <div className="p-6">
                 <h4 className="font-heading text-xl font-bold text-primary-900 mb-2">Premium Room</h4>
-                <div className="flex items-baseline gap-1 mb-4"><span className="font-heading text-3xl font-bold text-primary-900">₹8,000</span><span className="text-slate-500 font-body text-sm">/night</span></div>
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className="font-heading text-3xl font-bold text-primary-900">₹8,000</span>
+                  <span className="text-slate-500 font-body text-sm">/night</span>
+                </div>
                 <ul className="space-y-2 mb-6">
                   <li className="flex items-center gap-2 text-sm text-slate-600 font-body"><Check className="w-4 h-4 text-green-500" /> King/Twin beds, 42 sqm</li>
                   <li className="flex items-center gap-2 text-sm text-slate-600 font-body"><Check className="w-4 h-4 text-green-500" /> Pool view</li>
                   <li className="flex items-center gap-2 text-sm text-slate-600 font-body"><Check className="w-4 h-4 text-green-500" /> Breakfast included</li>
                 </ul>
-                <Link to="/registration"><Button className="w-full rounded-full font-body font-semibold bg-secondary-500 hover:bg-secondary-900 text-primary-900">Book with Registration</Button></Link>
+                <Link to="/registration">
+                  <Button className="w-full rounded-full font-body font-semibold bg-secondary-500 hover:bg-secondary-900 text-primary-900">Book with Registration</Button>
+                </Link>
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent">
-              <div className="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop&q=80" alt="Executive Suite" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" /></div>
+            {/* Executive Suite */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ delay: 0.2 }} 
+              className="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent hover:border-primary-200 transition-all"
+              data-testid="room-suite"
+            >
+              <div className="h-48 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop&q=80" alt="Executive Suite" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
               <div className="p-6">
                 <h4 className="font-heading text-xl font-bold text-primary-900 mb-2">Executive Suite</h4>
-                <div className="flex items-baseline gap-1 mb-4"><span className="font-heading text-3xl font-bold text-primary-900">₹12,000</span><span className="text-slate-500 font-body text-sm">/night</span></div>
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className="font-heading text-3xl font-bold text-primary-900">₹12,000</span>
+                  <span className="text-slate-500 font-body text-sm">/night</span>
+                </div>
                 <ul className="space-y-2 mb-6">
                   <li className="flex items-center gap-2 text-sm text-slate-600 font-body"><Check className="w-4 h-4 text-green-500" /> King bed, 65 sqm</li>
                   <li className="flex items-center gap-2 text-sm text-slate-600 font-body"><Check className="w-4 h-4 text-green-500" /> Panoramic view</li>
                   <li className="flex items-center gap-2 text-sm text-slate-600 font-body"><Check className="w-4 h-4 text-green-500" /> Club access</li>
                 </ul>
-                <Link to="/registration"><Button className="w-full rounded-full font-body font-semibold bg-primary-900 hover:bg-primary-900/90 text-white">Book with Registration</Button></Link>
+                <Link to="/registration">
+                  <Button className="w-full rounded-full font-body font-semibold bg-primary-900 hover:bg-primary-900/90 text-white">Book with Registration</Button>
+                </Link>
               </div>
             </motion.div>
           </div>
+
+          {/* Note */}
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-12 text-center">
+            <p className="text-sm text-slate-500 font-body">* Rates are exclusive for conference delegates. Reservations subject to availability. Check-in: 26th Nov | Check-out: 30th Nov 2026</p>
+          </motion.div>
         </div>
       </section>
     </div>
