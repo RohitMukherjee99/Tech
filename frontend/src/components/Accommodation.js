@@ -4,48 +4,13 @@ import { useRef } from 'react';
 import { Star, Wifi, Car, Utensils, Dumbbell, Coffee, Check, MapPin } from 'lucide-react';
 import { Button } from './ui/button';
 
-const hotelFeatures = [
-  { icon: Wifi, label: 'Free Wi-Fi' },
-  { icon: Car, label: 'Free Parking' },
-  { icon: Utensils, label: 'Multi-cuisine Restaurant' },
-  { icon: Dumbbell, label: 'Fitness Center' },
-  { icon: Coffee, label: 'Lounge & Bar' },
-  { icon: Star, label: '5-Star Service' }
-];
-
-const roomTypes = [
-  {
-    name: 'Deluxe Room',
-    price: 6000,
-    perNight: true,
-    image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&q=80',
-    features: ['King/Twin beds', '35 sqm', 'City view', 'Work desk', 'Mini bar'],
-    recommended: false
-  },
-  {
-    name: 'Premium Room',
-    price: 8000,
-    perNight: true,
-    image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&h=400&fit=crop&q=80',
-    features: ['King/Twin beds', '42 sqm', 'Pool view', 'Living area', 'Complimentary breakfast'],
-    recommended: true
-  },
-  {
-    name: 'Executive Suite',
-    price: 12000,
-    perNight: true,
-    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop&q=80',
-    features: ['King bed', '65 sqm', 'Panoramic view', 'Separate lounge', 'Club access'],
-    recommended: false
-  }
-];
-
 export default function Accommodation() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const scrollToRegistration = () => {
-    document.querySelector('#registration')?.scrollIntoView({ behavior: 'smooth' });
+    const el = document.querySelector('#registration');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -84,9 +49,11 @@ export default function Accommodation() {
             <div className="absolute inset-0 bg-gradient-to-t from-primary-900/70 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
               <div className="flex items-center gap-2 mb-2">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-secondary-500 fill-secondary-500" />
-                ))}
+                <Star className="w-4 h-4 text-secondary-500 fill-secondary-500" />
+                <Star className="w-4 h-4 text-secondary-500 fill-secondary-500" />
+                <Star className="w-4 h-4 text-secondary-500 fill-secondary-500" />
+                <Star className="w-4 h-4 text-secondary-500 fill-secondary-500" />
+                <Star className="w-4 h-4 text-secondary-500 fill-secondary-500" />
               </div>
               <h3 className="font-heading text-2xl font-bold text-white">The Westin Kolkata Rajarhat</h3>
               <p className="text-white/80 font-body text-sm mt-1 flex items-center gap-1">
@@ -107,12 +74,30 @@ export default function Accommodation() {
             </p>
             
             <div className="grid grid-cols-3 gap-4 mb-6">
-              {hotelFeatures.map((feature, index) => (
-                <div key={index} className="flex flex-col items-center text-center p-3 bg-slate-50 rounded-xl">
-                  <feature.icon className="w-5 h-5 text-primary-900 mb-2" />
-                  <span className="text-xs font-body text-slate-600">{feature.label}</span>
-                </div>
-              ))}
+              <div className="flex flex-col items-center text-center p-3 bg-slate-50 rounded-xl">
+                <Wifi className="w-5 h-5 text-primary-900 mb-2" />
+                <span className="text-xs font-body text-slate-600">Free Wi-Fi</span>
+              </div>
+              <div className="flex flex-col items-center text-center p-3 bg-slate-50 rounded-xl">
+                <Car className="w-5 h-5 text-primary-900 mb-2" />
+                <span className="text-xs font-body text-slate-600">Free Parking</span>
+              </div>
+              <div className="flex flex-col items-center text-center p-3 bg-slate-50 rounded-xl">
+                <Utensils className="w-5 h-5 text-primary-900 mb-2" />
+                <span className="text-xs font-body text-slate-600">Restaurant</span>
+              </div>
+              <div className="flex flex-col items-center text-center p-3 bg-slate-50 rounded-xl">
+                <Dumbbell className="w-5 h-5 text-primary-900 mb-2" />
+                <span className="text-xs font-body text-slate-600">Fitness</span>
+              </div>
+              <div className="flex flex-col items-center text-center p-3 bg-slate-50 rounded-xl">
+                <Coffee className="w-5 h-5 text-primary-900 mb-2" />
+                <span className="text-xs font-body text-slate-600">Lounge</span>
+              </div>
+              <div className="flex flex-col items-center text-center p-3 bg-slate-50 rounded-xl">
+                <Star className="w-5 h-5 text-primary-900 mb-2" />
+                <span className="text-xs font-body text-slate-600">5-Star</span>
+              </div>
             </div>
 
             <div className="bg-secondary-50 rounded-xl p-4 border border-secondary-200">
@@ -134,57 +119,128 @@ export default function Accommodation() {
             Room Categories
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
-            {roomTypes.map((room, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -8 }}
-                className={`relative bg-white rounded-2xl overflow-hidden shadow-lg border-2 transition-all duration-300 ${
-                  room.recommended ? 'border-secondary-500' : 'border-transparent'
-                }`}
-                data-testid={`room-${index}`}
-              >
-                {room.recommended && (
-                  <div className="absolute top-4 right-4 z-10 bg-secondary-500 text-primary-900 text-xs font-body font-semibold px-3 py-1 rounded-full">
-                    RECOMMENDED
-                  </div>
-                )}
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src={room.image}
-                    alt={room.name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  />
+            {/* Deluxe Room */}
+            <motion.div
+              whileHover={{ y: -8 }}
+              className="relative bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent transition-all duration-300"
+              data-testid="room-0"
+            >
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop&q=80"
+                  alt="Deluxe Room"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h4 className="font-heading text-xl font-bold text-primary-900 mb-2">Deluxe Room</h4>
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className="font-heading text-3xl font-bold text-primary-900">₹6,000</span>
+                  <span className="text-slate-500 font-body text-sm">/night</span>
                 </div>
-                <div className="p-6">
-                  <h4 className="font-heading text-xl font-bold text-primary-900 mb-2">{room.name}</h4>
-                  <div className="flex items-baseline gap-1 mb-4">
-                    <span className="font-heading text-3xl font-bold text-primary-900">
-                      ₹{room.price.toLocaleString()}
-                    </span>
-                    <span className="text-slate-500 font-body text-sm">/night</span>
-                  </div>
-                  <ul className="space-y-2 mb-6">
-                    {room.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm text-slate-600 font-body">
-                        <Check className="w-4 h-4 text-green-500" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    onClick={scrollToRegistration}
-                    className={`w-full rounded-full font-body font-semibold ${
-                      room.recommended
-                        ? 'bg-secondary-500 hover:bg-secondary-900 text-primary-900'
-                        : 'bg-primary-900 hover:bg-primary-900/90 text-white'
-                    }`}
-                    data-testid={`book-room-${index}`}
-                  >
-                    Book with Registration
-                  </Button>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-center gap-2 text-sm text-slate-600 font-body">
+                    <Check className="w-4 h-4 text-green-500" /> King/Twin beds
+                  </li>
+                  <li className="flex items-center gap-2 text-sm text-slate-600 font-body">
+                    <Check className="w-4 h-4 text-green-500" /> 35 sqm
+                  </li>
+                  <li className="flex items-center gap-2 text-sm text-slate-600 font-body">
+                    <Check className="w-4 h-4 text-green-500" /> City view
+                  </li>
+                </ul>
+                <Button
+                  onClick={scrollToRegistration}
+                  className="w-full rounded-full font-body font-semibold bg-primary-900 hover:bg-primary-900/90 text-white"
+                  data-testid="book-room-0"
+                >
+                  Book with Registration
+                </Button>
+              </div>
+            </motion.div>
+
+            {/* Premium Room */}
+            <motion.div
+              whileHover={{ y: -8 }}
+              className="relative bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-secondary-500 ring-2 ring-secondary-500 ring-offset-2 transition-all duration-300"
+              data-testid="room-1"
+            >
+              <div className="absolute top-4 right-4 z-10 bg-secondary-500 text-primary-900 text-xs font-body font-semibold px-3 py-1 rounded-full">
+                RECOMMENDED
+              </div>
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&h=400&fit=crop&q=80"
+                  alt="Premium Room"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h4 className="font-heading text-xl font-bold text-primary-900 mb-2">Premium Room</h4>
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className="font-heading text-3xl font-bold text-primary-900">₹8,000</span>
+                  <span className="text-slate-500 font-body text-sm">/night</span>
                 </div>
-              </motion.div>
-            ))}
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-center gap-2 text-sm text-slate-600 font-body">
+                    <Check className="w-4 h-4 text-green-500" /> King/Twin beds
+                  </li>
+                  <li className="flex items-center gap-2 text-sm text-slate-600 font-body">
+                    <Check className="w-4 h-4 text-green-500" /> 42 sqm, Pool view
+                  </li>
+                  <li className="flex items-center gap-2 text-sm text-slate-600 font-body">
+                    <Check className="w-4 h-4 text-green-500" /> Complimentary breakfast
+                  </li>
+                </ul>
+                <Button
+                  onClick={scrollToRegistration}
+                  className="w-full rounded-full font-body font-semibold bg-secondary-500 hover:bg-secondary-900 text-primary-900"
+                  data-testid="book-room-1"
+                >
+                  Book with Registration
+                </Button>
+              </div>
+            </motion.div>
+
+            {/* Executive Suite */}
+            <motion.div
+              whileHover={{ y: -8 }}
+              className="relative bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent transition-all duration-300"
+              data-testid="room-2"
+            >
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop&q=80"
+                  alt="Executive Suite"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h4 className="font-heading text-xl font-bold text-primary-900 mb-2">Executive Suite</h4>
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className="font-heading text-3xl font-bold text-primary-900">₹12,000</span>
+                  <span className="text-slate-500 font-body text-sm">/night</span>
+                </div>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-center gap-2 text-sm text-slate-600 font-body">
+                    <Check className="w-4 h-4 text-green-500" /> King bed
+                  </li>
+                  <li className="flex items-center gap-2 text-sm text-slate-600 font-body">
+                    <Check className="w-4 h-4 text-green-500" /> 65 sqm, Panoramic view
+                  </li>
+                  <li className="flex items-center gap-2 text-sm text-slate-600 font-body">
+                    <Check className="w-4 h-4 text-green-500" /> Club access
+                  </li>
+                </ul>
+                <Button
+                  onClick={scrollToRegistration}
+                  className="w-full rounded-full font-body font-semibold bg-primary-900 hover:bg-primary-900/90 text-white"
+                  data-testid="book-room-2"
+                >
+                  Book with Registration
+                </Button>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
 
@@ -201,7 +257,6 @@ export default function Accommodation() {
           </p>
         </motion.div>
 
-        {/* Divider */}
         <div className="implant-divider mt-20 rounded-full" />
       </div>
     </section>
