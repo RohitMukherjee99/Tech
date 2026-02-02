@@ -2,38 +2,19 @@ import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from 'sonner';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Committee from './components/Committee';
-import Program from './components/Program';
-import Speakers from './components/Speakers';
-import Registration from './components/Registration';
-import Accommodation from './components/Accommodation';
-import Sponsors from './components/Sponsors';
-import Venue from './components/Venue';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
-
-const HomePage = () => {
-  return (
-    <div className="min-h-screen">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Committee />
-        <Program />
-        <Speakers />
-        <Registration />
-        <Accommodation />
-        <Sponsors />
-        <Venue />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
-  );
-};
+import QuickLinks from './components/QuickLinks';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import CommitteePage from './pages/CommitteePage';
+import ProgramPage from './pages/ProgramPage';
+import SpeakersPage from './pages/SpeakersPage';
+import RegistrationPage from './pages/RegistrationPage';
+import AccommodationPage from './pages/AccommodationPage';
+import SponsorsPage from './pages/SponsorsPage';
+import VenuePage from './pages/VenuePage';
+import ContactPage from './pages/ContactPage';
+import DownloadsPage from './pages/DownloadsPage';
 
 function App() {
   return (
@@ -49,9 +30,24 @@ function App() {
         }}
       />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-        </Routes>
+        <Navbar />
+        <QuickLinks />
+        <main className="min-h-screen">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/committee" element={<CommitteePage />} />
+            <Route path="/program" element={<ProgramPage />} />
+            <Route path="/speakers" element={<SpeakersPage />} />
+            <Route path="/registration" element={<RegistrationPage />} />
+            <Route path="/accommodation" element={<AccommodationPage />} />
+            <Route path="/sponsors" element={<SponsorsPage />} />
+            <Route path="/venue" element={<VenuePage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/downloads" element={<DownloadsPage />} />
+          </Routes>
+        </main>
+        <Footer />
       </BrowserRouter>
     </div>
   );
