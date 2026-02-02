@@ -1,35 +1,30 @@
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Mail, Phone, ArrowUp } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Footer() {
+  const navigate = useNavigate();
+  
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const quickLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Program', href: '#program' },
-    { name: 'Speakers', href: '#speakers' },
-    { name: 'Registration', href: '#registration' },
-    { name: 'Accommodation', href: '#accommodation' },
-    { name: 'Venue', href: '#venue' },
+    { name: 'About', href: '/about' },
+    { name: 'Program', href: '/program' },
+    { name: 'Speakers', href: '/speakers' },
+    { name: 'Registration', href: '/registration' },
+    { name: 'Downloads', href: '/downloads' },
+    { name: 'Contact', href: '/contact' },
   ];
-
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <footer className="bg-gradient-to-b from-primary-900 to-[#001844] text-white" data-testid="footer">
-      {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
+            <Link to="/" className="flex items-center gap-3 mb-6">
               <div className="w-14 h-14 bg-secondary-500 rounded-xl flex items-center justify-center">
                 <span className="text-primary-900 font-heading font-bold text-2xl">OSI</span>
               </div>
@@ -37,11 +32,9 @@ export default function Footer() {
                 <h3 className="font-heading font-bold text-xl text-white">3RD OSI CONFERENCE</h3>
                 <p className="text-primary-200 font-body text-sm">KOLKATA 2026</p>
               </div>
-            </div>
+            </Link>
             <p className="text-primary-200 font-body leading-relaxed mb-6 max-w-md">
-              India's premier national conference on Osseointegration & Implant Dentistry. 
-              Bringing together clinicians, academicians, and industry leaders for three days 
-              of learning and innovation.
+              India's premier national conference on Osseointegration & Implant Dentistry.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex items-center gap-2 text-primary-200">
@@ -61,12 +54,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-primary-200 font-body hover:text-secondary-500 transition-colors"
-                  >
-                    {link.name}
-                  </button>
+                  <Link to={link.href} className="text-primary-200 font-body hover:text-secondary-500 transition-colors">{link.name}</Link>
                 </li>
               ))}
             </ul>
@@ -91,10 +79,7 @@ export default function Footer() {
               <li>
                 <div className="flex items-start gap-3 text-primary-200">
                   <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
-                  <span className="font-body text-sm">
-                    Plot No, 2, AA II, Newtown,<br />
-                    New Town, West Bengal 700135
-                  </span>
+                  <span className="font-body text-sm">Plot No, 2, AA II, Newtown,<br />New Town, West Bengal 700135</span>
                 </div>
               </li>
             </ul>
@@ -110,12 +95,8 @@ export default function Footer() {
               © 2026 3rd OSI Conference Kolkata. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
-              <a href="#privacy" className="text-primary-300 font-body text-sm hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#terms" className="text-primary-300 font-body text-sm hover:text-white transition-colors">
-                Terms of Service
-              </a>
+              <Link to="#" className="text-primary-300 font-body text-sm hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="#" className="text-primary-300 font-body text-sm hover:text-white transition-colors">Terms of Service</Link>
               <motion.button
                 onClick={scrollToTop}
                 whileHover={{ scale: 1.1 }}
@@ -129,9 +110,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      {/* Decorative implant pattern */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-secondary-500 to-transparent opacity-30" />
     </footer>
   );
 }
